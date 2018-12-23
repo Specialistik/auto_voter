@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 import os
-
+import time
 from bs4 import BeautifulSoup
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
