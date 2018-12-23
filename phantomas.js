@@ -6,10 +6,11 @@ page.open('https://www.business-gazeta.ru/article/406831', function(status) {
   if (status !== 'success') {
     console.log('Unable to access network');
   } else {
+    console.log('there is a network');
     var ua = page.evaluate(function() {
-        console.log('page has been evaluated')
-       var radiobutton = document.getElementById('radio-variant-f164-148252').click();
-       console.log(radiobutton);
+        console.log('page has been evaluated');
+       var rb = document.getElementById('radio-variant-f164-148252').click();
+       console.log(rb);
        var forms = document.getElementsByTagName('form');
        console.log(forms[0].innerText);
        console.log(forms[1].innerText);
