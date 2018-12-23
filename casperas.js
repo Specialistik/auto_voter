@@ -29,6 +29,6 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
 
 casper.run(function() {
     console.log('casper run has been entered');
-    console.log(this.getCurrentUrl(), this.response()); 
+    //console.log(this.getCurrentUrl(), this.response()); 
     this.exit();
 });
