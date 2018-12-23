@@ -6,7 +6,7 @@ import random
 from bs4 import BeautifulSoup
 
 def account_generator():
-    with open('vk_accounts.txt') as proxy_accs:
+    with open('proxy_accs.txt') as proxy_accs:
         for proxy_acc in proxy_accs:
             yield proxy_acc.rstrip('\n')
 
