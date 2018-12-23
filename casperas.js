@@ -18,7 +18,7 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
     });
 
     casper.on('resource.received', function(resp) {
-        this.echo(resp);
+        this.echo(JSON.stringify(resp, null, 4));
     });
 
     casper.then(function () {
