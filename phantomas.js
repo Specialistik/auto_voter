@@ -7,11 +7,13 @@ page.open('https://www.business-gazeta.ru/article/406831', function(status) {
     console.log('Unable to access network');
   } else {
     var ua = page.evaluate(function() {
-       document.getElementById('radio-variant-f164-148252').click();
+        console.log('page has been evaluated')
+       var radiobutton = document.getElementById('radio-variant-f164-148252').click();
+       console.log(radiobutton);
        var forms = document.getElementsByTagName('form');
-       console.log(forms[0]);
-       console.log(forms[1]);
-       console.log(forms[2]);
+       console.log(forms[0].innerText);
+       console.log(forms[1].innerText);
+       console.log(forms[2].innerText);
        return;
        //document.getElementsByClassName("login-form");
     });
