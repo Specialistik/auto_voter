@@ -11,7 +11,8 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
     casper.thenEvaluate(function() {
         this.click('input[id="radio-variant-f164-148252"][value="yes"]');
         casper.wait(4000, function(){echo('2')});
-        document.querySelector('input[type="submit"]').click();
+        response = document.querySelector('input[type="submit"]').click();
+        console.log(response);
         //document.querySelector('input[id="radio-variant-f164-148252"]').setAttribute('selected', true);
     });
 
@@ -25,4 +26,7 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
     */
 });
 
-casper.run();
+casper.run(function() {
+    console.log(this.getCurrentUrl(),'info'); 
+    this.exit();
+  });
