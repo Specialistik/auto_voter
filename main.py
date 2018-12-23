@@ -16,10 +16,19 @@ def account_generator():
             yield vk_email, vk_pass.rstrip('\n')
 
 r = requests.get('https://www.business-gazeta.ru/article/406831', headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"})
-print r.status_code
+beautiful = BeautifulSoup(r.text)
+for link in beautiful.find_all("input", type="hidden"):
+    post_request_data = {
+        'variant': 148252,
+        'poll': 2519,
+    }
+    #if link['name'] in ['csrf', ]
+    print link['name'], link['value']
+    #print(link.name, link.text)
+#print r.status_code
 
-r2 = requests.post("https://www.business-gazeta.ru/article/406831/polls/ajax/method/vote",  headers=HEADERS_CHROME)
-print r2.text
+#r2 = requests.post("https://www.business-gazeta.ru/article/406831/polls/ajax/method/vote",  headers=HEADERS_CHROME)
+#print r2.text
 #lolka = BeautifulSoup(r2.text)
 #print lolka.prettify()
 #print r.body
