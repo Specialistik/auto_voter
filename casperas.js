@@ -11,7 +11,7 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
     casper.thenEvaluate(function() {
         this.click('input[id="radio-variant-f164-148252"][value="yes"]');
         //casper.wait(4000, function(){echo('2')});
-        response = document.querySelector("form[action='/polls/vote']").click();
+        response = document.querySelector("form[action='/polls/vote']").submit();
         console.log(response);
 
         
@@ -21,20 +21,11 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
     casper.then(function () {
         console.log('clicked ok, new location is ' + this.getCurrentUrl());
     });
-    casper.run();
-
-/*
-    casper.thenEvaluate(
-        
-        function(){
-    //trigger click event on submit button
-        document.querySelector('input[type="submit"]').click();
-    });
-    */
+    
 });
-/*
+
+
 casper.run(function() {
     console.log(this.getCurrentUrl(),'info'); 
     this.exit();
 });
-*/
