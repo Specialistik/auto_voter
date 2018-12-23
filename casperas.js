@@ -10,11 +10,8 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
 
     casper.thenEvaluate(function() {
         this.click('input[id="radio-variant-f164-148252"][value="yes"]');
-        //casper.wait(4000, function(){echo('2')});
-        response = document.querySelector("form[action='/polls/vote']").submit();
-        console.log(response);
-       
-        //document.querySelector('input[id="radio-variant-f164-148252"]').setAttribute('selected', true);
+        document.querySelector('input[id="radio-variant-f164-148252"]').setAttribute('selected', true);
+        document.querySelector("form[action='/polls/vote']").submit();
     });
 
     casper.on('resource.received', function(resp) {
