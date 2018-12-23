@@ -5,8 +5,6 @@ import time
 import random
 from bs4 import BeautifulSoup
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 def account_generator():
     with open('vk_accounts.txt') as proxy_accs:
         for proxy_acc in proxy_accs:
@@ -18,5 +16,5 @@ for i in account_generator():
     print "--------------new casper command : " + bash_command
     os.system(bash_command)
     random_secs = random.randint(3,30)
-    print "---------------------sleep for " + random_secs
+    print "---------------------sleep for " + str(random_secs)
     time.sleep(random_secs)
