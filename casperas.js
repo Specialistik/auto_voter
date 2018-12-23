@@ -11,3 +11,5 @@ casper.thenEvaluate(function(){
 //trigger click event on submit button
     document.querySelector('input[type="submit"]').click();
 });
+
+casper.run();
