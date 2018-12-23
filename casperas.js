@@ -20,7 +20,6 @@ casper.start("https://www.business-gazeta.ru/article/406831", function() {
 
     casper.then(function () {
         console.log('clicked ok, new location is ' + this.getCurrentUrl());
-        console.log(this.response());
     });
 
 
