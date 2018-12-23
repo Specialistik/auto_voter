@@ -2,6 +2,7 @@
 import requests
 import os
 import time
+import random
 from bs4 import BeautifulSoup
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,7 +18,7 @@ for i in account_generator():
     print "------------------------new proxy command"
     os.system(bash_command)
     print "---------------------sleep for 10 seconds"
-    time.sleep(10)
+    time.sleep(random.randint(3,60))
     
 #r = requests.get('https://www.business-gazeta.ru/article/406831', headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"})
 #beautiful = BeautifulSoup(r.text)
