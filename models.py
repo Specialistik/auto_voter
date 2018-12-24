@@ -1,4 +1,4 @@
-from peewee import MySQLDatabase, Model
+from peewee import MySQLDatabase, Model, CharField
 mysql_db = MySQLDatabase('business_gazeta', user='root', password='1f53601c',host='localhost', port=3306)
 
 #db = SqliteDatabase('people.db')
