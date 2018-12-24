@@ -14,6 +14,8 @@ def text_proxy_generator():
 
 def proxy_generator():
     for proxy_acc in Proxy.select().where(used=False):
+        proxy_acc.used = True
+        proxy_acc.save()
         yield proxy_acc.host_port
 
 
