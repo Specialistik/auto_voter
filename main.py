@@ -1,13 +1,26 @@
 # -*- coding: utf-8 -*-
-import requests
-from bs4 import BeautifulSoup
+import os
+import time
+import random
+from models import UserAgent, Proxy
+from peewee import fn
 
-HEADERS_CHROME = {
-    "content-type":"text/html; charset=utf-8", 
-    "x-requested-with": "XMLHttpRequest",
-    "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36",
-    "accept-language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
-}
+
+def text_proxy_generator():
+    with open('proxy_accs.txt') as proxy_accs:
+        for proxy_acc in proxy_accs:
+            yield proxy_acc.rstrip('\n')
+
+
+def proxy_generator():
+    for proxy_acc in Proxy.select().where(used=False):
+        yield proxy_acc.host_port
+
+
+def random_user_agent_generator():
+    return UserAgent.select().order_by(fn.Random())
+    #return 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+
 
 def account_generator():
     with open('vk_accounts.txt') as vk_accs:
@@ -15,27 +28,12 @@ def account_generator():
             vk_email, vk_pass = vk_acc.split(':')
             yield vk_email, vk_pass.rstrip('\n')
 
-r = requests.get('https://www.business-gazeta.ru/article/406831', headers={"user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"})
-beautiful = BeautifulSoup(r.text)
-#with open('response.html', 'w') as response_file:
-#    response_file.write(beautiful.text)
-for iteration, link in enumerate(beautiful.find_all("input", type="hidden")):
-    post_request_data = {
-        'variant': 148252,
-        'poll': 2519,
-        'local_ip': "192.168.1.9",
-    }
-    if link['name'] == 'csrf':
-        post_request_data['csrf'] = link['value']
-    if iteration == 2:
-        post_request_data[link['name']] = 
-        print iteration, link['name'], link['value']
-    #print(link.name, link.text)
-#print r.status_code
 
-#r2 = requests.post("https://www.business-gazeta.ru/article/406831/polls/ajax/method/vote",  headers=HEADERS_CHROME)
-#print r2.text
-#lolka = BeautifulSoup(r2.text)
-#print lolka.prettify()
-#print r.body
-#print r.text
+if __name__ == "__main__":
+    for i in proxy_generator():
+        bash_command = "casperjs casperas.js --proxy=" + i
+        print "--------------new casper command : " + bash_command
+        os.system(bash_command)
+        random_secs = random.randint(3,30)
+        print "---------------------sleep for " + str(random_secs)
+        time.sleep(random_secs)
