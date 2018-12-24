@@ -8,5 +8,13 @@ class UserAgent(Model):
     user_agent = CharField(unique=True)
 
     class Meta:                                           
-        database = mysql_db  # модель будет использовать базу данных 'people.db'
+        database = mysql_db
         db_table = 'user_agents'     
+
+class Proxy(Model):
+    host_port = CharField(unique=True)
+    login_pass CharField(NULL = True)
+
+    class Meta:
+        database = mysql_db
+        db_table = 'proxies'
