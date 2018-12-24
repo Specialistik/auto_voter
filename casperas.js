@@ -5,7 +5,7 @@ var casper = require('casper').create({
 
 
 casper.start("https://www.business-gazeta.ru/article/406831", function() {
-    //casper.userAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X)');
+    casper.userAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36');
     this.waitForSelector('form[action="/polls/vote"]');
 
     casper.thenEvaluate(function() {
