@@ -13,7 +13,7 @@ class UserAgent(Model):
 
 class Proxy(Model):
     host_port = CharField(unique=True)
-    login_pass CharField(NULL = True)
+    login_pass = CharField(NULL = True)
 
     class Meta:
         database = mysql_db
