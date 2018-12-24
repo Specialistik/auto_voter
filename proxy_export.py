@@ -1,4 +1,4 @@
-from models import mysql_db, Proxy
+from models import Proxy
 from main_proxy import proxy_generator
 
 for proxy in proxy_generator():
